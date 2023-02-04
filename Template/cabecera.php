@@ -1,13 +1,10 @@
-<?php session_start();
-ob_start();
-
- ?>
-
 <?php 
+
+session_start();
+
 include('Administrador/config/bd.php');
 
 if (isset($_SESSION['carrito'])){
-
 
   $carrito_mio=$_SESSION['carrito'];
   $total_cantidad=0;
@@ -30,27 +27,24 @@ $validarsesion="";
 if(!isset($total_cantidad))
   {$total_cantidad=0;
   }else{
-  $total_cantidad = $total_cantidad;}
- 
-if(isset($_SESSION['usuario'])){
-
-$validarsesion =$_SESSION['usuario'];
-}else{
-$validarsesion =$validarsesion;
+  $total_cantidad = $total_cantidad;
 
 }
-$tipousuario="";
-if(isset($_SESSION['tipo'])){
-  $sentenciaSQL=$conexion->prepare("SELECT tipo 	 FROM tbtipousuario where idtipousuario = :idex ");
-  $sentenciaSQL->bindParam(':idex',$_SESSION['tipo']);
-  $sentenciaSQL->execute();
-  $listatipousuario=$sentenciaSQL->fetch(PDO::FETCH_LAZY);
-  $tipousuario=$listatipousuario['tipo'];
  
-  }else{
-  $tipousuario =$tipousuario;
-  
-  }
+
+
+if(isset($_SESSION['idusuario'])){
+
+  $idusu = $_SESSION['idusuario'];
+
+  echo  "<script> var id_userlogin = ". $idusu. "; </script> " ;
+
+
+}else{
+  $idusu="";
+
+}
+
   
 
 ?>
@@ -62,8 +56,8 @@ if(isset($_SESSION['tipo'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecomerce</title>
-    <link rel="stylesheet" href="../CSS/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/estilos.css">
     
        
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
@@ -117,6 +111,24 @@ include $_SERVER['DOCUMENT_ROOT']."/Ecomerce/Carrito/modal_cart.php";
 </style>
 
 
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script>
+  <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+   
+        
+
+ <script >  var  variableGlobal=""; </script>
+
+<script src="JS/cabecera.js"></script>
+
+
+
+
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-purple" style="background: purple">
 <div class="container-fluid">
@@ -131,24 +143,46 @@ include $_SERVER['DOCUMENT_ROOT']."/Ecomerce/Carrito/modal_cart.php";
           
     <div class="collapse navbar-collapse" id="navbarMenu">
       <ul class="nav navbar-nav mr-auto">
-      <li class="nav-item">
-            <a href="index.php" class="nav-link active" style="color: white;">Inicio</a> </li>
-       <li class="nav-item">
-           <a href="Productos.php" class="nav-link" style="color: white;">Productos</a></li>
-       <li class="nav-item">
-           <a href="Nosotros.php" class="nav-link" style="color: white;">Nosotros</a></li>
-          
+        <li class="nav-item">
+              <a href="index.php" class="nav-link active" style="color: white;">Inicio</a> </li>
+
+              <li class="dropdown">
+                  <div class="dropdown">
+                      <a href="#" class="dropdown-toggle nav-item nav-link" style="color: white;" data-bs-toggle="dropdown">Productos</a>
+                      <div class="dropdown-menu" style="background: purple">
+                          <div id="llenarselect_productos">
+                          </div>
+                      </div>
+                  </div>
+              </li>
+
+
+
+
+        <li class="nav-item">
+            <a href="Nosotros.php" class="nav-link" style="color: white;">Nosotros</a></li>
+            
  
-      <li class="dropdown">
-      <div class="dropdown">
-            <a href="#" class="dropdown-toggle nav-item nav-link"  style="color: white;" data-bs-toggle="dropdown">Usuario</a>
-            <div class="dropdown-menu" style="background: purple">
-                <a class="nav-item nav-link"  style="color: white;" href=""> Ver Perfil</a>
-                <a class="nav-item nav-link"  style="color: white;" href="Login/index.php">Iniciar Sesión</a>
-                <a class="nav-item nav-link"  style="color: white;" href="Login/seccion/salir.php">Cerrar Sesión</a>
-            </div>
-        </div>
-        </li>
+        <li class="dropdown">
+              <div class="dropdown">
+                    <a href="#" class="dropdown-toggle nav-item nav-link"  style="color: white;" data-bs-toggle="dropdown">Usuario</a>
+                          <div class="dropdown-menu" style="background: purple">
+                                    <?php
+                                      if ($idusu !="") {
+                                        echo "<a class='nav-item nav-link'  style='color: white; '  href='Login/index.php'> Ver Perfil </a>";
+                                        echo "<a class='nav-item nav-link'  style='color: white; display:none;' href='Login/index.php'> Iniciar Sesión </a>";
+                                        echo "<a class='nav-item nav-link'  style='color: white; ;' href='Login/seccion/salir.php'> Cerrar Sesión </a>";
+
+                                      } else {
+                                        echo "<a class='nav-item nav-link'  style='color: white; display:none;'  href='Login/index.php'> Ver Perfil </a>";
+                                        echo "<a class='nav-item nav-link'  style='color: white; ' href='Login/index.php'> Iniciar Sesión </a>";
+                                        echo "<a class='nav-item nav-link'  style='color: white; display:none;' href='Login/seccion/salir.php'> Cerrar Sesión </a>";
+               
+                                      }
+                                    ?>
+                          </div>
+                </div>
+          </li>
         </ul>
     </div>
  
@@ -157,10 +191,6 @@ include $_SERVER['DOCUMENT_ROOT']."/Ecomerce/Carrito/modal_cart.php";
   </div>
 </nav>
 
-
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
     <div class=container>
      

@@ -27,7 +27,7 @@
 
                                                             <div class="form-group">
                                                             <label for="text">Imagen</label>
-                                                            <img class="img-thumbnail rounded"  id="txtImagen_imagen" src="" width="100" alt="" srcset="">
+                                                            <img class="img-thumbnail rounded"  id="txtImagen_imagen" src="../../Img/Medio_Envio/EnviorDefault.jpg" width="100" alt="" srcset="">
                                                             <input type="file"  class="form-control"  id="txtImagen" placeholder="Imagen">
                                                             <input type="hidden" required class="form-control"  id="txtImagen_name" placeholder="Categoria">
                                                             </div>

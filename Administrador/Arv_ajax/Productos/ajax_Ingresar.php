@@ -36,18 +36,27 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'ingresar')
         echo json_encode($response);
         exit;
       }
-    
-    //check if item already exists
-    $sentenciaSQL = $conexion->prepare("SELECT * FROM tbproducto WHERE producto = :dato1 LIMIT 1");
-    $sentenciaSQL->bindParam(':dato1', $producto);
-    $sentenciaSQL->execute();
-    $dato = $sentenciaSQL->fetch();
 
-    if($dato){
-        $response['resultado'] = $producto . ' ya se encuentra registrado';
+      if (!filter_var($cantidad, FILTER_VALIDATE_INT) || $cantidad <= 0) {
+        $response['resultado'] = 'La cantidad tiene que ser un número entero mayor a 0';
         echo json_encode($response);
         exit;
-    }
+      }
+      
+    
+   //check if item already exists
+   $sentenciaSQL = $conexion->prepare("SELECT * FROM tbproducto WHERE producto = :dato1 and idusuario=:dato2 LIMIT 1");
+   $sentenciaSQL->bindParam(':dato1', $producto);
+   $sentenciaSQL->bindParam(':dato2', $idusuario);
+   $sentenciaSQL->execute();
+   $dato = $sentenciaSQL->fetch();
+
+   if($dato){
+       $response['resultado'] = $producto . ' ya se encuentra registrado';
+       echo json_encode($response);
+       exit;
+   }
+
 
     //insert user into the database
     $sentenciaSQL = $conexion->prepare("INSERT INTO tbproducto (

@@ -40,6 +40,8 @@ include "../../config/bd.php";
                             'estado'=>$estado
                         
                         );
+
+                        
                         $jsonstring = json_encode($response);
                         echo $jsonstring;
                         exit;

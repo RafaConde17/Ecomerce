@@ -61,3 +61,9 @@ function showConfirmationDialog() {
       }
     });
   }
+
+  function validateImage(imageUrl) {
+    var img = new Image();
+    img.src = imageUrl;
+    return img.height !== 0;
+}

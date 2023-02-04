@@ -3,7 +3,7 @@ $(document).ready(function() {
     
     // mostrar estado en combo 
     $.ajax({
-        url: '../Arv_ajax/Arv_ajax_select/ajax_estado.php',
+        url: '../../Arv_ajax/Arv_ajax_select/ajax_estado.php',
         type: 'POST',
         async: true,
         data: {action:'buscarestado'},
@@ -26,7 +26,7 @@ $(document).ready(function() {
     // mostrar categoria_producto en combo 
 
     $.ajax({
-        url:'../Arv_ajax/Arv_ajax_select/ajax_categoria_producto.php',
+        url:'../../Arv_ajax/Arv_ajax_select/ajax_categoria_producto.php',
         type: 'POST',
         async: true,
         data: {action:'selecionar_combo'},
@@ -49,7 +49,7 @@ $(document).ready(function() {
 
     // mostrar tipo usuario en combo  
             $.ajax({
-                url:'../Arv_ajax/Arv_ajax_select/ajax_tipo_usu.php',
+                url:'../../Arv_ajax/Arv_ajax_select/ajax_tipo_usu.php',
                 type: 'POST',
                 async: true,
                 data: {action: 'selecionartipousu'},

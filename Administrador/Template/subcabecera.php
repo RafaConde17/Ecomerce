@@ -4,12 +4,15 @@ session_start();
 
 include('../config/bd.php');
 
+
 if(isset($_SESSION['idusuario'])){
 
     $idusuario = $_SESSION['idusuario'];
+    echo  "<script> var id_userlogin = ". $idusuario. "; </script> " ;
+
 
 }else{
-    echo "<script>location.href='../../index.php';</script>";
+    echo "<script>location.href='../index.php';</script>";
 
 }
 

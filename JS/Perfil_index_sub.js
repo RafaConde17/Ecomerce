@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var idusuario = document.getElementById('idusuario').value;
+    var idusuario = id_userlogin;
     $.ajax({
 
         url:'../../Arv_ajax/Perfil/ajax_Bus_uno.php',

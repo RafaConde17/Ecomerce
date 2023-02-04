@@ -4,10 +4,12 @@
 
 
 
-<div class="modal" id="modalproductoindex"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal" id="modalproductoindex"   style=" width: 90%;  height: 90%; margin: auto;" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
+
       <div class="modal-header">
+		
         <h5 class="modal-title nameProducto"   id="staticBackdropLabel">Modal title</h5>
         <button type="button" class="btn-close"  onclick="coloseModal();" aria-label="Close"></button>
       </div>

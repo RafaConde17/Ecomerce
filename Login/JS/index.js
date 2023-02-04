@@ -47,6 +47,7 @@ $(document).ready(function() {
                         
                         document.body.appendChild(form);
                         form.submit();
+                        
                         } else if (logeado =="2"){
                           var form = document.createElement('form');
                             form.method = "post";
@@ -67,6 +68,7 @@ $(document).ready(function() {
 
                             document.body.appendChild(form);
                             form.submit();
+
                         } else if(logeado =="3"){
                           var form = document.createElement('form');
                           form.method = "post";

@@ -4,7 +4,7 @@
    
 
     habilitarBotones();
-    var id_general = document.getElementById('txtID').value;
+    var id_general = id_userlogin;
     
     //mostrar Lista de usuarios en tabla
             $.ajax({
@@ -91,7 +91,7 @@
                             async: true,
                             data: {
                                 action: 'modificarusuario',
-                                idusuario: id,
+                                idusuario: id_general,
                                 Contrasenia : con,
                                 Nombres : nom,
                                 Apellidos : ape,
@@ -127,7 +127,7 @@
                                                             console.log(resultado);
                                                         
                                                             // Aquí puedes utilizar la variable 'resultado' en tu código
-                                                            document.getElementById("txtimagen_img").src = "../../Img/Usuarios_img/" + imagen;
+                                                            document.getElementById("txtimagen_img").src = "../Img/Usuarios_img/" + imagen;
                                                             habilitado = true;
                                                             habilitarBotones();
 

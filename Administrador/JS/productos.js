@@ -95,47 +95,47 @@ $(document).ready(function() {
                       $("#modal").fadeIn();
                       });
 
-                      $('.nuevo').click(function(event){
-                        event.preventDefault();
-                            document.getElementById("BotonModificarIngresar").innerHTML = "Ingresar"; 
+                            $('.nuevo').click(function(event){
+                                event.preventDefault();
+                                    document.getElementById("BotonModificarIngresar").innerHTML = "Ingresar"; 
+                                    habilitarBotones();
+                                    $("#modal").fadeIn();
+                            });
+
+                        $('.Modificardatos').click(function () {
+                            
+                            habilitado = false;
                             habilitarBotones();
-                            $("#modal").fadeIn();
-                    });
 
-                    $('.Modificardatos').click(function () {
+                            var accion =  document.getElementById("BotonModificarIngresar").innerHTML ;
+
+                            if(accion=="Ingresar"){
+                                $('.producto').attr("disabled", false);
+                            }   
+                        });
+
+
+                        $('.Cancelardatos').click(function () {
+                            habilitado = true;
+                            habilitarBotones();
                         
-                        habilitado = false;
-                        habilitarBotones();
+                            var accion =  document.getElementById("BotonModificarIngresar").innerHTML ;
+                            
 
-                        var accion =  document.getElementById("BotonModificarIngresar").innerHTML ;
+                            if(accion=="Ingresar"){
 
-                        if(accion=="Ingresar"){
-                            $('.producto').attr("disabled", false);
-                        }   
-                    });
+                                $('.producto').attr("disabled", true);
+                                document.getElementById("llenarcombo").options[0].selected = true;
+                                document.getElementById("categoria_combo").options[0].selected = true;
+                            
 
+                            } else{
 
-                    $('.Cancelardatos').click(function () {
-                        habilitado = true;
-                        habilitarBotones();
-                    
-                        var accion =  document.getElementById("BotonModificarIngresar").innerHTML ;
+                                $('#categoria_combo').val(combo_categoria);
+                                $('#llenarcombo').val(combo_estado);
+                            }
                         
-
-                        if(accion=="Ingresar"){
-
-                            $('.producto').attr("disabled", true);
-                            document.getElementById("llenarcombo").options[0].selected = true;
-                            document.getElementById("categoria_combo").options[0].selected = true;
-                           
-
-                        } else{
-
-                            $('#categoria_combo').val(combo_categoria);
-                            $('#llenarcombo').val(combo_estado);
-                        }
-                    
-                    });
+                        });
 
                         $("#llenarlista_categoria").on("click", ".borrar", function()
         

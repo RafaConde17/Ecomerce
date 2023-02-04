@@ -1,6 +1,6 @@
 <?php include('../template/subcabecera.php');?>
 
-<script src="../JS/select.js"></script>
+<script src="../../JS/select.js"></script>
 <script src="../../JS/comandos.js"></script>
 <script src="../JS/usuario.js"></script>
 

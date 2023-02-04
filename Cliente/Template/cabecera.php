@@ -7,18 +7,22 @@ if(isset( $_POST["id"])){
 
     $_SESSION['idusuario'] = $_POST['id'] ;
     $_SESSION['tipousuario'] = $_POST['tipousuario'] ;
+    
 }
+
+
 
 if(isset($_SESSION['idusuario'])){
 
-    $idusuario = $_SESSION['idusuario'];
-
-}else{
+    $idusu = $_SESSION['idusuario'];
+  
+    echo  "<script> var id_userlogin = ". $idusu. "; </script> " ;
+  
+  
+  }else{
     echo "<script>location.href='../index.php';</script>";
-
-}
-
-
+  
+  }
 
  ?>
 

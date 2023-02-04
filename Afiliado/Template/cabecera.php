@@ -12,11 +12,15 @@ if(isset( $_POST["id"])){
 if(isset($_SESSION['idusuario'])){
 
     $idusuario = $_SESSION['idusuario'];
+    echo  "<script> var id_userlogin = ". $idusuario. "; </script> " ;
+
 
 }else{
     echo "<script>location.href='../index.php';</script>";
 
 }
+
+
 
 
 
@@ -81,9 +85,12 @@ if(isset($_SESSION['idusuario'])){
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
    
- 
+        
 
 <script src="../JS/Perfil_index.js"></script>
+
+
+
 
 <div class="container-fluid">
     <div class="row flex-nowrap">
@@ -94,7 +101,6 @@ if(isset($_SESSION['idusuario'])){
              
                 <a  >
                 <img class="imagecabecera" id="txtimagen_cabecera" src="../Img/Usuarios_img/User_default.png" alt="profile_picture">
-                <input type="hidden" class="form-control"  id="idusuario" value="<?php echo $idusuario;?>"   placeholder="Ingrese usuario">
               
                 </a> 
                 <div  style="  text-align:center;">

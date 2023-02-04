@@ -21,7 +21,7 @@
 
                                                                 <h1  style="text-align: center;    font-weight: bold;">Foto de Usuario</h1>
                                                                         <div  class="mb-3">
-                                                                         <img class="rounded mx-auto d-block usuario_img"  src=""  width="150"  alt="" id="modal_imagen"><br>
+                                                                         <img class="rounded mx-auto d-block usuario_img"  src="../../Img/Usuarios_img/User_default.png"  width="150"  alt="" id="modal_imagen"><br>
                                                                       
                                                                        
                                                                         </div>

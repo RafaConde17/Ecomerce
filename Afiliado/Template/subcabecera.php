@@ -9,14 +9,7 @@ if(isset( $_POST["id"])){
     $_SESSION['tipousuario'] = $_POST['tipousuario'] ;
 }
 
-if(isset($_SESSION['idusuario'])){
 
-    $idusuario = $_SESSION['idusuario'];
-
-}else{
-    echo "<script>location.href='../../index.php';</script>";
-
-}
 
 
 
@@ -34,6 +27,9 @@ if(isset($_SESSION['idusuario'])){
    
     
     <link rel="stylesheet" href="../../CSS/bootstrap.min.css"/>
+        
+    <link rel="stylesheet" href="../../CSS/estilos.css"/>
+
 
     <link rel="stylesheet" src="https://kit.fontawesome.com/0cac6245f1.js" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
@@ -69,13 +65,26 @@ if(isset($_SESSION['idusuario'])){
 
 
 </head>
+ <?php 
+ 
+ if(isset($_SESSION['idusuario'])){
 
+    $idusuario = $_SESSION['idusuario'];
+    echo  "<script> var id_userlogin = ". $idusuario. "; </script> " ;
+
+
+}else{
+    echo "<script>location.href='../../index.php';</script>";
+
+}
+
+?>
 
 
 <body >
 
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script>
   <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
@@ -93,7 +102,6 @@ if(isset($_SESSION['idusuario'])){
              
                 <a  >
                 <img class="imagecabecera" id="txtimagen_cabecera" src="../../Img/Usuarios_img/User_default.png" alt="profile_picture">
-                <input type="hidden" class="form-control"  id="idusuario" value="<?php echo $idusuario;?>"   placeholder="Ingrese usuario">
               
                 </a> 
                 <div  style="  text-align:center;">

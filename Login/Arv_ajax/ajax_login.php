@@ -13,7 +13,10 @@ include "../../Administrador/config/bd.php";
 
             $txtusuario = $_POST['txtusuario'];
             $txtcontrasenia =  hash('sha256', $_POST['txtcontrasenia']);
-             //  $txtcontrasenia =  $_POST['txtcontrasenia'];
+            
+             
+             
+              //  $txtcontrasenia =  $_POST['txtcontrasenia'];
 
              if (!function_exists('hash')) {
 

@@ -12,11 +12,20 @@
          unlink($file_path);
 
             $respuesta = array(
-                'image' => $name,
+                'imagen' => $name,
                 'resultado' => 'La imagen se ha borrado correctamente'
             );
-            echo json_encode($respuesta);
 
+            echo json_encode($respuesta);
+            exit;
+        }else{
+
+        $respuesta = array(
+            'imagen' => $name,
+            'resultado' => 'La imagen se ha borrado correctamente'
+        );
+        echo json_encode($respuesta);
+        exit;
         }
 
     }

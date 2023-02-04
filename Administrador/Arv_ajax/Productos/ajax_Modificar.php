@@ -36,6 +36,14 @@ if (!empty($_POST) && isset($_POST['action']) && $_POST['action'] == 'modificar'
         echo json_encode($response);
         exit;
       }
+
+
+      if (!filter_var($cantidad, FILTER_VALIDATE_INT) || $cantidad <= 0) {
+        $response['resultado'] = 'La cantidad tiene que ser un número entero mayor a 0';
+        echo json_encode($response);
+        exit;
+      }
+      
     
     //insert user into the database
    $sentenciaSQL = $conexion->prepare("UPDATE tbproducto

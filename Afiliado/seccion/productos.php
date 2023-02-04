@@ -1,7 +1,11 @@
 <?php include('../template/subcabecera.php');?>
+
+
 <script src="../../JS/select.js"></script>
 <script src="../../JS/comandos.js"></script>
 <script src="../JS/productos.js"></script>
+<script src="../../JS/Productos/modal.js"></script>
+
 
 <div class=container>
    
@@ -23,7 +27,6 @@
                                     <table class="table table-bordered tabla">
                                         <thead>
                                             <tr>
-                                                <th>Usuario</th>
                                                 <th>Producto</th>
                                                 <th>Categoria</th>
                                                 <th>Sub Categoria</th>
@@ -45,5 +48,5 @@
                 </div>
         </div>
 </div>
-<?php  include $_SERVER['DOCUMENT_ROOT']."/Ecomerce/Administrador/seccion/modal_pro.php"; ?>
+<?php  include $_SERVER['DOCUMENT_ROOT']."/Ecomerce/Modal/Productos/modal_Reg_mod.php"; ?>
 <?php include('../template/pie.php');?>
