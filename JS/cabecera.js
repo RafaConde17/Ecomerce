@@ -25,8 +25,16 @@ $(document).ready(function() {
     $("#llenarselect_productos").on("click", ".cambiodeproductos", function()
     {
         variableGlobal= $(this).attr('referencia');
+        
         localStorage.setItem("variableGlobal", variableGlobal);
         
+        const xhr = new XMLHttpRequest();
+
+        xhr.open("GET", "Carrito/borrarcarro.php", true);
+        xhr.send();
+
+
+
     });
 
 

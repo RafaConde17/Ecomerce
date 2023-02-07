@@ -4,6 +4,7 @@
 
 
 include $_SERVER['DOCUMENT_ROOT']."/Ecomerce/Template/subcabecera.php";
+
 include('../Administrador/config/bd.php');
 
 $fecha = new Datetime();
@@ -14,6 +15,9 @@ $direccion=(isset($_POST['direccion']))?$_POST['direccion']:"";
 $telefono=(isset($_POST['telefono']))?$_POST['telefono']:"";
 $totalfinal=(isset($_POST['totalfinal']))?$_POST['totalfinal']:"";
 $accion=(isset($_POST['accion']))?$_POST['accion']:"";
+
+
+
 
 
 
@@ -81,7 +85,9 @@ switch($accion){
                                                              
                                                                 
                                                                 for($i=0; $i < $cantidad; $i ++){
+
                                                                 $total = $carrito_mio[$i]['precio'] * $carrito_mio[$i]['cantidad'];
+
                                                                 $sentenciaSQL=$conexion->prepare("INSERT INTO tbpedidodatos( ref, usuario,cantidad,imagen, articulos, precio, total, fecha, estado)
                                                                 VALUES (:p_ref,:p_usuario,:p_cantidad, :p_imagen , :p_articulos,:p_precio,:p_total,:p_fecha,:p_estado)");
                                                                 $sentenciaSQL->bindParam(':p_ref',$ref);
@@ -94,8 +100,23 @@ switch($accion){
                                                                 $sentenciaSQL->bindParam(':p_fecha',$fechaActual);
                                                                 $sentenciaSQL->bindParam(':p_estado',$estado);
                                                                 $sentenciaSQL->execute(); 
+
                                                                 }
+
+
+                                                                
+                                                                $sentenciaSQL=$conexion->prepare("SELECT *  FROM tbusuarios  where idusuario  = :id  LIMIT 1 ");
+                                                                $sentenciaSQL->bindParam(':id',$_SESSION['afiliado']);
+                                                                $sentenciaSQL->execute();
+                                                                
+                                                                $lista_afiliado=$sentenciaSQL->fetch(PDO::FETCH_LAZY);
                                                                
+                                                                if($lista_afiliado!=""){
+                                                                $afiliado= $lista_afiliado['NameTienda'] ;
+                                                                }  
+
+
+
                                                                 $cliente = $nombre . " ". $apellidos;
                                                                 $estadopago="Pendiente de pago";
                                                              
@@ -104,12 +125,14 @@ switch($accion){
                            
                                                                 $totalfinal = str_replace(',', '.', $totalfinal);
                                                                 $totalfinal = floatval($totalfinal);
-
-                                                                $sentenciaSQL=$conexion->prepare("INSERT INTO tbpedido( ref, usuario,cliente, estadopago, medio, total, fecha, estado)
-                                                                VALUES (:p_ref,:p_usuario,:p_cliente,:p_estadopago,:p_medio,:p_total,:p_fecha,:p_estado)");
+                                                                 
+                                                                
+                                                                $sentenciaSQL=$conexion->prepare("INSERT INTO tbpedido( ref, usuario,cliente, afiliado, estadopago, medio, total, fecha, estado)
+                                                                VALUES (:p_ref,:p_usuario,:p_cliente,:p_afiliado,:p_estadopago,:p_medio,:p_total,:p_fecha,:p_estado)");
                                                                 $sentenciaSQL->bindParam(':p_ref',$ref);
                                                                 $sentenciaSQL->bindParam(':p_usuario',$datousuario);
                                                                 $sentenciaSQL->bindParam(':p_cliente',$cliente);
+                                                                $sentenciaSQL->bindParam(':p_afiliado',$afiliado);
                                                                 $sentenciaSQL->bindParam(':p_estadopago',$estadopago);
                                                                 $sentenciaSQL->bindParam(':p_medio',$medio);
                                                                 $sentenciaSQL->bindParam(':p_total', $totalfinal);
@@ -142,6 +165,9 @@ switch($accion){
         }
 
 ?>
+
+
+
 
 <div class ="center mt-1"  >
     <div class="card pt-3"  Style="background: rgb(153,102,153);">
@@ -179,7 +205,19 @@ switch($accion){
                                                                 <tr >
 
                                                                             <th scope="row" style="vertical-align: middle;"><?php echo ($i +1) ?> </th>
-                                                                            <td><img  src="../Img/Productos_img/<?php echo $carrito_mio[$i]['imagen'] ?>" alt="" width="100"></td>
+                                                                            <?php
+                
+                                                                            $ruta1 = "../Img/Productos_img/" . $carrito_mio[$i]['imagen'];
+                                                                            $ruta2 = "../Img/Medio_Envio/" . $carrito_mio[$i]['imagen'];
+                                                                            
+                                                                            if (file_exists($ruta1)) {
+                                                                                $imagen = $ruta1;
+                                                                                } else {
+                                                                                $imagen = $ruta2;
+                                                                                }?>
+                                                                          
+                                                                            
+                                                                            <td>  <img  src="<?php echo $imagen ?>" alt="" width="100"></td>
                                                                             <td style="vertical-align: middle;"><?php echo $carrito_mio[$i]['cantidad'] ?></td>                                          
                                                                             <td style="vertical-align: middle;"><?php echo $carrito_mio[$i]['producto'] ?></td>
                                                                             <td style="vertical-align: middle;"><?php echo number_format($carrito_mio[$i]['precio'],2,",",".")  ?></td>
@@ -236,8 +274,7 @@ switch($accion){
                                     <span style=" color: #000000;" class="grey-text font-weight-bold" style="font-size: 14px;">
                                             <strong>S/. 
                                             <?php
-                                            $masiva = $total/1.18;
-                                            $totaliva = $total - $masiva;
+                                            $totaliva = $total*0.18;
                                             echo number_format($totaliva,2,",",".");
                                             ?> 
                                             </strong>

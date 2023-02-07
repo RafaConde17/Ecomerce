@@ -7,7 +7,12 @@ include "../../Administrador/config/bd.php";
         {   
 
        
-            
+            if (!function_exists('hash')) {
+
+                $response['resultado'] = 'La función hash() está disponible.';
+                echo json_encode($response);
+                exit;
+             }
 
 
 
@@ -18,12 +23,7 @@ include "../../Administrador/config/bd.php";
              
               //  $txtcontrasenia =  $_POST['txtcontrasenia'];
 
-             if (!function_exists('hash')) {
-
-                $response['resultado'] = 'La función hash() está disponible.';
-                echo json_encode($response);
-                exit;
-             }
+    
 
             if(empty($txtusuario) || empty($txtcontrasenia ) ){
 

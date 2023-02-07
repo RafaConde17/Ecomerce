@@ -3,16 +3,16 @@ $(document).ready(function() {
 
     //---Comandos para tipo de usuario ---//
      //mostrar Lista de usuarios en tabla
-        var combo_itemselect ="Referencia";
+        var combo_itemselect ="Cliente";
        
         llenarlista();
         $('#combo').change(function(){
           combo_itemselect = this.value;
        
-          if (combo_itemselect === "Usuario") {
+          if (combo_itemselect === "Cliente") {
             
             $('#txtbuscar1').attr('type', 'text');
-            $('#txtbuscar1').attr('placeholder', 'Buscar Usuario');
+            $('#txtbuscar1').attr('placeholder', 'Buscar Cliente');
             $('#txtbuscar2').attr('type', 'hidden');
             $('#txtbuscar1').val("");
             $('#txtbuscar2').val("");
@@ -21,6 +21,16 @@ $(document).ready(function() {
         
             $('#txtbuscar1').attr('type', 'text');
             $('#txtbuscar1').attr('placeholder', 'Buscar Referencia');
+  
+            $('#txtbuscar2').attr('type', 'hidden');
+            $('#txtbuscar1').val("");
+            $('#txtbuscar2').val("");
+            llenarlista();
+          } else if (combo_itemselect === "Tienda") {
+
+        
+            $('#txtbuscar1').attr('type', 'text');
+            $('#txtbuscar1').attr('placeholder', 'Buscar Tienda');
   
             $('#txtbuscar2').attr('type', 'hidden');
             $('#txtbuscar1').val("");
@@ -68,15 +78,16 @@ $(document).ready(function() {
                                 // recorrer los resultados y agregarlos a la tabla
                                 for(let i = 0; i < resultado.length; i++){
                                     let fila = "<tr>";
-                                    fila += "<td>" + resultado[i].valor + "</td>";
                                     fila += "<td>" + resultado[i].usuario + "</td>";
+                                    fila += "<td>" + resultado[i].tienda + "</td>";
                                     fila += "<td>" + resultado[i].ref + "</td>";
-                                    fila += "<td>" + "<label class='text-control' style='margin-right: 5px'>"+ resultado[i].cant + "</label>"+ 
+                                    fila += "<td>" + "<label class='text-control' style='margin-right: 5px'>"+ resultado[i].Can_Articulos + "</label>"+ 
                                     "<a  type ='button' class=' btn btn-success ver_productos'  referencia='"+ resultado[i].ref +"'  >"+
                                     "<i class='fas fa-eye'></i>  </a>"  +
                                     "</td>";
-                                    fila += "<td>" + resultado[i].medio + "</td>";
                                     fila += "<td>" + resultado[i].estadopago + "</td>";
+                                    fila += "<td>" + resultado[i].precioproducto + "</td>";
+                                    fila += "<td>" + resultado[i].IVA  + "</td>";
                                     fila += "<td>" + resultado[i].total + "</td>";
                                     fila += "<td>" + resultado[i].fecha + "</td>";
                                     fila += "<td> "+
@@ -127,15 +138,16 @@ $(document).ready(function() {
                                 // recorrer los resultados y agregarlos a la tabla
                                 for(let i = 0; i < resultado.length; i++){
                                     let fila = "<tr>";
-                                    fila += "<td>" + resultado[i].valor + "</td>";
                                     fila += "<td>" + resultado[i].usuario + "</td>";
+                                    fila += "<td>" + resultado[i].tienda + "</td>";
                                     fila += "<td>" + resultado[i].ref + "</td>";
-                                    fila += "<td>" + "<label class='text-control' style='margin-right: 5px'>"+ resultado[i].cant + "</label>"+ 
+                                    fila += "<td>" + "<label class='text-control' style='margin-right: 5px'>"+ resultado[i].Can_Articulos + "</label>"+ 
                                     "<a  type ='button' class=' btn btn-success ver_productos'  referencia='"+ resultado[i].ref +"'  >"+
                                     "<i class='fas fa-eye'></i>  </a>"  +
                                     "</td>";
-                                    fila += "<td>" + resultado[i].medio + "</td>";
                                     fila += "<td>" + resultado[i].estadopago + "</td>";
+                                    fila += "<td>" + resultado[i].precioproducto + "</td>";
+                                    fila += "<td>" + resultado[i].IVA  + "</td>";
                                     fila += "<td>" + resultado[i].total + "</td>";
                                     fila += "<td>" + resultado[i].fecha + "</td>";
                                     fila += "<td> "+
@@ -196,7 +208,10 @@ $(document).ready(function() {
                       fila += "<td>" + resultado[i].cantidad + "</td>";
                       fila += "<td>" + resultado[i].precio + "</td>";
                       fila += "<td>" + resultado[i].total + "</td>";
+                      
                       fila += "</tr>";
+
+      
                       $("#llenarlista_modaldatos").append(fila);
                   }
 
@@ -299,15 +314,17 @@ function llenarlista(){
         // recorrer los resultados y agregarlos a la tabla
             for(let i = 0; i < resultado.length; i++){
                 let fila = "<tr>";
-                fila += "<td>" + resultado[i].valor + "</td>";
+                
                 fila += "<td>" + resultado[i].usuario + "</td>";
+                fila += "<td>" + resultado[i].tienda + "</td>";
                 fila += "<td>" + resultado[i].ref + "</td>";
                 fila += "<td>" + "<label class='text-control' style='margin-right: 5px'>"+ resultado[i].Can_Articulos + "</label>"+ 
                 "<a  type ='button' class=' btn btn-success ver_productos'  referencia='"+ resultado[i].ref +"'  >"+
                 "<i class='fas fa-eye'></i>  </a>"  +
                 "</td>";
-                fila += "<td>" + resultado[i].medio + "</td>";
                 fila += "<td>" + resultado[i].estadopago + "</td>";
+                fila += "<td>" + resultado[i].precioproducto + "</td>";
+                fila += "<td>" + resultado[i].IVA  + "</td>";
                 fila += "<td>" + resultado[i].total + "</td>";
                 fila += "<td>" + resultado[i].fecha + "</td>";
                 fila += "<td> "+

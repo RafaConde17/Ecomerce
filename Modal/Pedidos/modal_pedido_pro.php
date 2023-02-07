@@ -25,7 +25,7 @@
                                             <th>Total</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="llenarlista_modaldatos">
+                                         <tbody id="llenarlista_modaldatos">
                                         </tbody>
                                     </table>
                                         

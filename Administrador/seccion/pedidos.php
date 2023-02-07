@@ -19,20 +19,21 @@
                                 <div class="col-sm-12 col-md-2">
                                     <div class="form-group">
                                         <select id="combo" title="Combo" class="form-control buscarcombo">
+                                            <option value="Cliente">Cliente</option>  
+                                            <option value="Tienda">Tienda</option> 
                                             <option value="Referencia">Referencia</option>
-                                            <option value="Usuario">Usuario</option>
                                             <option value="Fecha">Fecha</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-3">
                                     <div class="form-group">
-                                        <input type="text" class="form-control vaciotext" id="txtbuscar1" placeholder="Buscar Referencia">
+                                        <input type="text" class="form-control vaciotext" id="txtbuscar1" placeholder="Buscar Cliente">
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-3">
                                     <div class="form-group">
-                                        <input type="hidden" class="form-control" id="txtbuscar2" placeholder="Buscar Referencia">
+                                        <input type="hidden" class="form-control" id="txtbuscar2" placeholder="Buscar Cliente">
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-3">
@@ -51,12 +52,14 @@
                                     <table class="table table-bordered tabla">
                                         <thead>
                                             <tr>
-                                            <th >N°</th>
-                                            <th >Usuario</th>
+                                      
+                                            <th >Cliente</th>
+                                            <th >Tienda</th>
                                             <th>Ref</th>
                                             <th>Productos</th>
-                                            <th>Medio</th>
                                             <th>Estado</th>
+                                            <th>Sub Total</th>
+                                            <th>IVA</th>
                                             <th>Total</th>
                                             <th>Fecha</th>
                                             <th>Acciones</th>

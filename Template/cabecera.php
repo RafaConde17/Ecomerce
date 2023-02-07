@@ -1,57 +1,35 @@
-<?php 
-
-session_start();
-
-include('Administrador/config/bd.php');
-
-if (isset($_SESSION['carrito'])){
-
-  $carrito_mio=$_SESSION['carrito'];
-  $total_cantidad=0;
-      for($i=0;$i<count($carrito_mio);$i++){
-        if(isset($carrito_mio[$i])){
-            if($carrito_mio[$i]!=NULL){
-                if(!isset($carrito_mio[$i]['cantidad'])){
-                        $carrito_mio['cantidad']=0;}
-                      else{
-                        $carrito_mio['cantidad'][$i] = $carrito_mio[$i]['cantidad'];
-              }
-                $total_cantidad = $total_cantidad + $carrito_mio[$i]['cantidad'];
+<?php session_start();
+ob_start();
+if(isset( $_SESSION["carrito"])){
+  $carrito_mio = $_SESSION["carrito"];
+  $total_cantidad = 0;
+  for ($i = 0; $i < count($carrito_mio); $i++) {
+    if (isset($carrito_mio[$i])) {
+      if ($carrito_mio[$i] != NULL) {
+        if (!isset($carrito_mio[$i]["cantidad"])) {
+          $carrito_mio[$i]["cantidad"] = 0;
         }
+        $total_cantidad = $total_cantidad + $carrito_mio[$i]["cantidad"];
       }
     }
-}
-
-$validarsesion="";
-
+  }}
 if(!isset($total_cantidad))
   {$total_cantidad=0;
   }else{
-  $total_cantidad = $total_cantidad;
-
-}
- 
-
-
-if(isset($_SESSION['idusuario'])){
-
-  $idusu = $_SESSION['idusuario'];
-
-  echo  "<script> var id_userlogin = ". $idusu. "; </script> " ;
-
-
-}else{
-  $idusu="";
-
-}
+  $total_cantidad = $total_cantidad;}
 
   
-
-?>
+if (isset($_SESSION["idusuario"])) {
+  $idusu = $_SESSION["idusuario"];
+  echo "<script>var id_userlogin=".$idusu.";</script>";
+}else{
+  $idusu="";
+}?>
     
 <!DOCTYPE html>
 <html lang="en">    
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,17 +41,9 @@ if(isset($_SESSION['idusuario'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
    
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-  </head>
-<?php 
-
-include $_SERVER['DOCUMENT_ROOT']."/Ecomerce/Carrito/modal_cart.php";
-
-?>
-
+</head>
 <script>
   // Array con las rutas de las imágenes
   var imagenes = ['Img/fondoindex/imagen1.jpg',
@@ -113,9 +83,9 @@ include $_SERVER['DOCUMENT_ROOT']."/Ecomerce/Carrito/modal_cart.php";
 
 
 
-
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script>
-  <!-- Popper.JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script>
+  
+   <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
@@ -125,6 +95,9 @@ include $_SERVER['DOCUMENT_ROOT']."/Ecomerce/Carrito/modal_cart.php";
  <script >  var  variableGlobal=""; </script>
 
 <script src="JS/cabecera.js"></script>
+<script src="JS/comandos.js"> </script>
+
+<script src="JS/productos.js"> </script>
 
 
 
@@ -133,7 +106,7 @@ include $_SERVER['DOCUMENT_ROOT']."/Ecomerce/Carrito/modal_cart.php";
 <nav class="navbar navbar-expand-lg navbar-light bg-purple" style="background: purple">
 <div class="container-fluid">
 <img width="100" src="Img/WASY.png" class=" rounded mx-auto d-block">
-    <a class="nav-link" data-toggle="modal" data-target="#modal_cart" style="color: red;"><i class="fas fa-shopping-cart"></i> <?php echo $total_cantidad;  ?></a>
+    <a class="nav-link" data-toggle="modal" data-target="#modal_cart" style="color: red;"><i class="fas fa-shopping-cart"></i><?php echo $total_cantidad;?></a>
     
     
     <button type="button" class="navbar-toggler"  data-toggle="collapse" data-target="#navbarMenu"  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -192,7 +165,8 @@ include $_SERVER['DOCUMENT_ROOT']."/Ecomerce/Carrito/modal_cart.php";
 </nav>
 
 
-    <div class=container>
+<?php include $_SERVER['DOCUMENT_ROOT']."/Ecomerce/Carrito/modal_cart.php"; ?>
+<div class=container>
      
-            <div class="row">
+<div class="row">
                 

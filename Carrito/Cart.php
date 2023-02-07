@@ -105,7 +105,17 @@ if (isset($_SESSION['carrito'])){
 
             <th scope="row" style="vertical-align: middle;"><?php echo ($i +1) ?> </th>
             <td>
-                <img  src="../Img/Productos_img/<?php echo $carrito_mio[$i]['imagen'] ?>" alt="" width="100">
+                <?php
+                
+               $ruta1 = "../Img/Productos_img/" . $carrito_mio[$i]['imagen'];
+               $ruta2 = "../Img/Medio_Envio/" . $carrito_mio[$i]['imagen'];
+               
+                if (file_exists($ruta1)) {
+                    $imagen = $ruta1;
+                    } else {
+                    $imagen = $ruta2;
+                    }?>
+                <img  src="<?php echo $imagen ?>" alt="" width="100">
             </td>
             <td style="vertical-align: middle;" >
             <form id="form2" name="form1" method="POST">
