@@ -83,9 +83,9 @@
                                             <table class="table-bordered tabla">
                                                 <thead >
                                                     <tr>
+                                                        <th>Usuario</th>
                                                         <th>Medio envio</th>
                                                         <th >Imagen</th>
-                                                        <th >Descipción</th>
                                                         <th >Precio</th>
                                                         <th >Estado</th>
                                                         <th >Acciones</th>

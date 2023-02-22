@@ -7,8 +7,9 @@ if(!empty($_POST)){
     { 
         try {
             $sentenciaSQL=$conexion->prepare(" SELECT * FROM tbmediodeenvio 
-                                                INNER JOIN tbestado on tbestado.idestado = tbmediodeenvio.estado 
-                                                ORDER BY medioenvio ASC");
+            INNER JOIN tbestado on tbestado.idestado = tbmediodeenvio.estado 
+            INNER JOIN tbusuarios on tbusuarios.idusuario = tbmediodeenvio.idusuario
+            ORDER BY medioenvio ASC");
             $sentenciaSQL->execute();
             $result=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
             
@@ -18,6 +19,7 @@ if(!empty($_POST)){
                     $json[] =array(
                         'valor' => $count,
                         'idmedioenvio' => filter_var($row['idmedioenvio'], FILTER_SANITIZE_NUMBER_INT),
+                        'usuario'=> filter_var($row['Usuario'],FILTER_SANITIZE_STRING),
                         'medioenvio'=> filter_var($row['medioenvio'],FILTER_SANITIZE_STRING),
                         'imagen_m_envio' => filter_var($row['imagen_m_envio'],FILTER_SANITIZE_STRING),
                         'descripcion_m_envio' => filter_var($row['descripcion_m_envio'],FILTER_SANITIZE_STRING),

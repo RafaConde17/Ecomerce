@@ -25,9 +25,9 @@ $(document).ready(function() {
                             // recorrer los resultados y agregarlos a la tabla
                                 for(let i = 0; i < resultado.length; i++){
                                     let fila = "<tr>";
+                                    fila += "<td>" + resultado[i].usuario + "</td>";
                                     fila += "<td>" + resultado[i].medioenvio + "</td>";
                                     fila += "<td>"  + "<img src='../"+ imagenruta +resultado[i].imagen_m_envio+"' width='50' alt='' srcset=''></img>"  + "</td>";
-                                    fila += "<td>" + resultado[i].descripcion_m_envio + "</td>";
                                     fila += "<td>" + resultado[i].precio_m_envio + "</td>";
                                     fila += "<td>" + resultado[i].detalleestado + "</td>";
                                     fila += "<td> "+

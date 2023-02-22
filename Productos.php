@@ -58,6 +58,6 @@
 </div>
 
 
-<?php  include $_SERVER['DOCUMENT_ROOT']."/Ecomerce/modal_img.php"; ?>
+<?php  include $_SERVER['DOCUMENT_ROOT']."/Ecomerce/Modal/Productos/modal_Ver_prin.php"; ?>
 
   <?php include("template/pie.php"); ?>

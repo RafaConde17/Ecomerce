@@ -121,7 +121,7 @@ if (isset($_SESSION["idusuario"])) {
 
               <li class="dropdown">
                   <div class="dropdown">
-                      <a href="#" class="dropdown-toggle nav-item nav-link" style="color: white;" data-bs-toggle="dropdown">Productos</a>
+                      <a href="#" class="dropdown-toggle nav-item nav-link" style="color: white;" data-bs-toggle="dropdown">Tiendas</a>
                       <div class="dropdown-menu" style="background: purple">
                           <div id="llenarselect_productos">
                           </div>

@@ -32,16 +32,16 @@ if(!empty($_POST)){
                                 $estado= $result['detalleestado'];
                         
                                 $response = array(
-                                'idproducto'=>$idproducto,
-                                'producto' => $producto,
-                                'idcategoria'=>$idcategoria,
-                                'subcategoria' => $subcategoria,
-                                'descripcion'=>$descripcion,
-                                'cantidad' => $cantidad,
-                                'precio'=>$precio,
-                                'imagen' => $imagen,
-                                'estado'=>$estado
-                            
+                                'idproducto'=>filter_var($idproducto, FILTER_SANITIZE_NUMBER_INT),
+                                'producto' =>filter_var( $producto,FILTER_SANITIZE_STRING),
+                                'idcategoria'=>filter_var($idcategoria,FILTER_SANITIZE_STRING),
+                                'subcategoria' => filter_var($subcategoria,FILTER_SANITIZE_STRING),
+                                'descripcion'=>filter_var($descripcion,FILTER_SANITIZE_STRING),
+                                'cantidad' => filter_var($cantidad, FILTER_SANITIZE_NUMBER_INT),
+                                'precio' => number_format(filter_var($precio,FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION), 2, '.', ''),
+                                'imagen' => filter_var($imagen,FILTER_SANITIZE_STRING),
+                                'estado'=>filter_var($estado,FILTER_SANITIZE_STRING)
+                
                             );
 
                             $jsonstring = json_encode($response);

@@ -9,6 +9,10 @@ if(isset( $_POST["id"])){
     $_SESSION['tipousuario'] = $_POST['tipousuario'] ;
 }
 
+if( $_SESSION['tipousuario']!='2'){
+    echo "<script>location.href='../../Login/seccion/salir.php';</script>";
+    echo "<script>location.href='../../index.php';</script>";
+}
 
 
 
@@ -134,7 +138,8 @@ if(isset( $_POST["id"])){
                                 <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                     <li class="w-100">
                                     <a href="pedidos.php" class="nav-link px-0"> <span class="d-none d-sm-inline" style="margin-left: 20px;"></span> Ver pedidos</a>
-                                
+                                    <a href="mis_pedidos.php" class="nav-link px-0"> <span class="d-none d-sm-inline" style="margin-left: 20px;"></span> Mis pedidos</a>
+                            
                                 </li>
                                 
                                 </ul>

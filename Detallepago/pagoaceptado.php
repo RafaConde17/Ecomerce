@@ -60,7 +60,27 @@ switch($accion){
             <h4 Style="color: white;  font-weight: bold;"  class="card-title" id="productos">Operacion Procesador</h4>
             <img class="rounded mx-auto d-block" width="300" id="" src="../Img/OpComplete.png" alt="">
 
-                 <a class="link_add btn btn-primary " Style="color: white; margin-bottom: 10px; margin-top: 10px;"  href="../Cliente/seccion/pedidos.php"  >Ver pedidos</a>
+                 <a class="link_add btn btn-primary " Style="color: white; margin-bottom: 10px; margin-top: 10px;"  href="<?php 
+                 
+
+              if( $_SESSION['tipousuario']=='1'){
+
+                  echo "../Administrador/seccion/pedidos.php";
+
+              }else if( $_SESSION['tipousuario']=='2'){
+
+                  echo "../Afiliado/seccion/pedidos.php";
+              }else if( $_SESSION['tipousuario']=='3'){
+
+                  echo "../Cliente/seccion/pedidos.php";
+              }
+              
+                 
+                 
+                 
+                 
+                 
+                 ?>"  >Ver pedidos</a>
                  <a class="link_add btn btn-success " Style="color: white; margin-bottom: 10px; margin-top: 10px;"  href="../index.php"  >Cerrar</a>
                  
             </form>

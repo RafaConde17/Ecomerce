@@ -11,13 +11,17 @@ if(isset( $_POST["id"])){
 
 if(isset($_SESSION['idusuario'])){
 
-    $idusuario = $_SESSION['idusuario'];
+    $idusu = $_SESSION['idusuario'];
+    echo  "<script> var id_userlogin = ". $idusu. "; </script> " ;
 
 }else{
     echo "<script>location.href='../../index.php';</script>";
 
 }
-
+if( $_SESSION['tipousuario']!='3'){
+    echo "<script>location.href='../../Login/seccion/salir.php';</script>";
+    echo "<script>location.href='../../index.php';</script>";
+}
 
 
  ?>
@@ -74,9 +78,11 @@ if(isset($_SESSION['idusuario'])){
 <body >
 
 
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script>
-  <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+
+<!-- Popper.JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
    

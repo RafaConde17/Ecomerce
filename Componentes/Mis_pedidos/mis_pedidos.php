@@ -1,9 +1,4 @@
 
-<?php include('../template/subcabecera.php');?>
-
-<script src="../../JS/comandos.js"></script>
-<script src="../JS/pedidos.js"></script>
-
 
 <div class=container>
    
@@ -19,8 +14,8 @@
                                 <div class="col-sm-12 col-md-2">
                                     <div class="form-group">
                                         <select id="combo" title="Combo" class="form-control buscarcombo">
+                                            <option value="Tienda">Tienda</option>
                                             <option value="Referencia">Referencia</option>
-                                            <option value="Cliente">Cliente</option>
                                             <option value="Fecha">Fecha</option>
                                         </select>
                                     </div>
@@ -51,7 +46,7 @@
                                     <table class="table table-bordered tabla">
                                         <thead>
                                             <tr>
-                                            <th >Usuario</th>
+                                            <th >Tienda</th>
                                             <th>Ref</th>
                                             <th>Productos</th>
                                             <th>Estado</th>
@@ -60,7 +55,6 @@
                                             <th>Total</th>
                                             <th>Fecha</th>
                                             <th>Acciones</th>
-                                            </tr>
                                         </thead>
                                         <tbody id="llenarlista">
                                         </tbody>
@@ -72,6 +66,5 @@
                 </div>
         </div>
 </div>
-<?php  include $_SERVER['DOCUMENT_ROOT']."/Ecomerce/Modal/Pedidos/modal_pedido_pro.php"; ?>
-<?php  include $_SERVER['DOCUMENT_ROOT']."/Ecomerce/Modal/Pedidos/modal_pedido_datos.php"; ?>
-<?php include('../template/pie.php');?>
+
+

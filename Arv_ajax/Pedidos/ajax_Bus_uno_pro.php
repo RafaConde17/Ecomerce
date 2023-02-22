@@ -1,5 +1,5 @@
 <?php
-include "../../config/bd.php";
+include "../../Administrador/config/bd.php";
 
 if(!empty($_POST)){
         

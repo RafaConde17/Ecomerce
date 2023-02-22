@@ -120,7 +120,7 @@ if(!empty($_POST)){
                     on tbpedidocliente.ref = tbpedido.ref 
                      WHERE tbpedido.fecha >=  :p_id and tbpedido.fecha <= :p_id2
                       GROUP BY tbpedido.ref 
-                     ORDER BY buscar_User  " );
+                     ORDER BY tbpedido.fecha desc " );
                   
                     $sentenciaSQL->bindParam(':p_id', $id1);
                     $sentenciaSQL->bindParam(':p_id2', $id2);

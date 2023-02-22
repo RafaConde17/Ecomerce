@@ -1,25 +1,16 @@
 
- //variable habilitado para podr acceder al estado de disabled de las etiquetas
-
-
 $(document).ready(function() {
-    
-                //toto este apartado son configuraciones para  la seccion Usuario y modal usuario
                 var combo_categoria = "";
                 var combo_estado = "";    
-                //mostrar Lista de usuarios en tabla
                         $.ajax({
                             url:'../Arv_ajax/Usuario/ajax_lista.php',
                             type: 'POST',
                             async: true,
                             data: {action: 'verlistausuario'},
                             success: function(response){
-                
                             if(response !='error'){
                                 let resultado = JSON.parse(response);
-                                // vaciar el contenido de la tabla
                                 $("#llenarlistaususario").empty();
-                                // recorrer los resultados y agregarlos a la tabla
                                 for(let i = 0; i < resultado.length; i++){
                                     let fila = "<tr>";
                                     fila += "<td>" + resultado[i].Usuario + "</td>";
@@ -50,12 +41,9 @@ $(document).ready(function() {
                                 async: true,
                                 data: {action:'verusuario',referencia:referencia},
                                 success: function(response){
-                                // console.log(response);
                                 
                                 if(response !='error'){
                                     var info = JSON.parse(response);
-                                // datos del modal
-
                                     $('#usuario_id').val(info.idusuario);
                                     $('#usuario_usu').val(info.Usuario);
                                     $('#usuario_con').val(info.Contraseña);
@@ -179,22 +167,17 @@ $(document).ready(function() {
                             var img = "";
                             var imagenruta="../Img/Usuarios_img/";
                             var imagendefaul_usu="User_default.png";
-                            // Create a new FormData object to hold the image file
                             const formData_guardar = new FormData();
                             
                                         var imagen = document.getElementById("usuario_img").value;
 
 
-                                        // Verifica si el campo de imagen está vacío y asigna un valor predeterminado
                                         if(imagen.length > 0){
                                             
                                         
-                                                    // create variables para poder obtener los atributos 
                                                     const img_dir = document.getElementById('usuario_img').files[0];
                                                     const previous_image_name = document.getElementById("usuario_nom_img").value;
-
                                                 
-                                                    // Use a timestamp to make the image name unique
                                                     const timestamp = new Date().getTime();
                                                     img = timestamp + '_' + img_dir.name;
 
@@ -254,7 +237,6 @@ $(document).ready(function() {
                                                                         var resultado = data["resultado"];
                                                                         console.log(resultado);
                                                                     
-                                                                        // Aquí puedes utilizar la variable 'resultado' en tu código
                                                                         document.getElementById("modal_imagen").src = "../../Img/Usuarios_img/" + imagen;
                                                                         habilitado = true;
                                                                         habilitarBotones();
@@ -311,7 +293,6 @@ $(document).ready(function() {
                                                         method: 'POST',
                                                         body: formData_guardar
                                                     }).then(response => {
-                                                        // Handle the server response here
                                                         if(response !='error'){
 
                                                             response.text().then(function (text) {
@@ -327,7 +308,6 @@ $(document).ready(function() {
                                                         }
                                                     
                                                     }).catch(error => {
-                                                        // Handle any errors here
                                                         console.error(error);
                                                     });
 

@@ -24,6 +24,10 @@ if(isset($_SESSION['idusuario'])){
   
   }
 
+  if( $_SESSION['tipousuario']!='3'){
+    echo "<script>location.href='../Login/seccion/salir.php';</script>";
+    echo "<script>location.href='../index.php';</script>";
+}
  ?>
 
 <!DOCTYPE html>

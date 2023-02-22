@@ -16,6 +16,10 @@ if(isset($_SESSION['idusuario'])){
 
 }
 
+if( $_SESSION['tipousuario']!='1'){
+    echo "<script>location.href='../../Login/seccion/salir.php';</script>";
+    echo "<script>location.href='../../index.php';</script>";
+}
 
 ?> 
   <!-- b4-$ + tab -->
@@ -122,8 +126,9 @@ if(isset($_SESSION['idusuario'])){
                         <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                             <li class="w-100">
                             <a href="pedidos.php" class="nav-link px-0"> <span class="d-none d-sm-inline" style="margin-left: 20px;"></span> Ver pedidos</a>
-                        </li>
-                        
+                            <a href="mis_pedidos.php" class="nav-link px-0"> <span class="d-none d-sm-inline" style="margin-left: 20px;"></span> Mis pedidos</a>
+                         
+                          </li>
                         </ul>
                     </li>
                     <li tyle="color: white;">

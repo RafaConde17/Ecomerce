@@ -20,7 +20,10 @@ if(isset($_SESSION['idusuario'])){
 
 }
 
-
+if( $_SESSION['tipousuario']!='2'){
+    echo "<script>location.href='../Login/seccion/salir.php';</script>";
+    echo "<script>location.href='../index.php';</script>";
+}
 
 
 
@@ -131,6 +134,7 @@ if(isset($_SESSION['idusuario'])){
                                 <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                     <li class="w-100">
                                     <a href="seccion/pedidos.php" class="nav-link px-0"> <span class="d-none d-sm-inline" style="margin-left: 20px;"></span> Ver pedidos</a>
+                                    <a href="seccion/mis_pedidos.php" class="nav-link px-0"> <span class="d-none d-sm-inline" style="margin-left: 20px;"></span> Mis pedidos</a>
                                 
                                 </li>
                                 
